@@ -1,0 +1,10 @@
+# 🎄 Advent of Code 2021 - day 1 🎄
+
+## Info
+
+Task description: [link](https://adventofcode.com/2021/day/1)
+
+## Notes
+
+Convert input to number array
+...
