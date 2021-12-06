@@ -121,6 +121,8 @@ const part1 = (rawInput: string) => {
   let winningBoard: numbers[][] = [];
   let lastDrawnNumber = 0;
 
+  // loop over all drawing numbers, then over all boards and check each board for a bingo
+  // if the first bingo is hit, break out of the loop and calculate the final score
   outerLoop: for (const drawnNumber of drawnNumbers) {
     for (const board of arrayOfBoards) {
       if (winningBoard.length === 0)
@@ -147,15 +149,15 @@ const part2 = (rawInput: string) => {
   let losingBoard: numbers[][] = [];
   let lastDrawnNumber = 0;
 
+  // loop over all drawing numbers, then over all boards _backwards_ and check each board for a bingo
+  // if a bingo is hit, delete that board, and continue
+  // repeat until original array is empty, then save the last board that got a bingo and break out of loop
+  // calculate final score with that board
   outerLoop: for (const drawnNumber of drawnNumbers) {
     for (let i = arrayOfBoards.length - 1; i >= 0; i--) {
       const board = arrayOfBoards[i];
-      for (let j = 0; j < board.length; j++) {
-        const row = board[j];
-        for (let k = 0; k < row.length; k++) {
-          const column = row[k];
-          if (board[0][0].number === 3 && drawnNumber === 16) {
-          }
+      for (const row of board) {
+        for (const column of row) {
           if (drawnNumber === column.number) {
             column.marked = true;
           }
